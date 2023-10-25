@@ -140,7 +140,7 @@ a&amp; \text{b=0}\\
 $$
 The equation can be converted the linear expression about $a_l,\ b_l,\ a_i,\ b_i$</p>
 <p>We can solve these variables by collect 98 equations.</p>
-<p>So, if we get $a.b$, just need to find the root of $x^3+a*x+b-y_0^2\ (mod\ p)$. That&rsquo;s easy!</p>
+<p>So, if we get $a\ b$, just need to find the root of $x^3+a*x+b-y_0^2\ (mod\ p)$. That&rsquo;s easy!</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span>io <span style="color:#f92672">=</span> process(<span style="color:#e6db74">&#34;./corruptedcurvesplus.py&#34;</span>)
 </span></span><span style="display:flex;"><span>

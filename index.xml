@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>0ut51d3:)</title>
+    <link>/</link>
+    <description>Recent content on 0ut51d3:)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 Oct 2023 17:15:31 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>/posts/test/</link>
+      <pubDate>Wed, 25 Oct 2023 17:15:31 +0800</pubDate>
+      
+      <guid>/posts/test/</guid>
+      <description>$a_3&#43;t_2&#43;t^m=8-0*3$
+$$ \varphi = 1&#43;\frac{1} {1&#43;\frac{1} {1&#43;\frac{1} {1&#43;\cdots} } } $$</description>
+      <content:encoded><![CDATA[<p>$a_3+t_2+t^m=8-0*3$</p>
+<p>$$
+\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

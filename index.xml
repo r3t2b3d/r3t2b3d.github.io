@@ -6,7 +6,230 @@
     <description>Recent content on 0ut51d3:)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Oct 2023 00:44:01 +0800</lastBuildDate><atom:link href="https://r3t2b3d.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Oct 2023 11:17:14 +0800</lastBuildDate><atom:link href="https://r3t2b3d.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BalsnCTF2022   Vss</title>
+      <link>https://r3t2b3d.github.io/posts/balsnctf2022-vss/</link>
+      <pubDate>Fri, 27 Oct 2023 11:17:14 +0800</pubDate>
+      
+      <guid>https://r3t2b3d.github.io/posts/balsnctf2022-vss/</guid>
+      <description>vss task.py
+#!/opt/homebrew/bin/python3 from Crypto.Util.number import * from Crypto.Cipher import AES from Crypto.Util.Padding import pad import os import random from hashlib import sha256 FLAG = b&amp;#39;this_is_a_test_flag&amp;#39; class ShareScheme: def __init__(self, key: bytes): assert len(key) == 128 self.key1 = bytes_to_long(key[:64]) self.key2 = bytes_to_long(key[64:]) def getShare(self): p = getPrime(512) a = random.randint(2, p - 1) b = random.randint(2, p - 1) c = random.randint(2, p - 1) y = (a &#43; self.key1 * b &#43; self.</description>
+      <content:encoded><![CDATA[<h2 id="vss">vss</h2>
+<p><code>task.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/opt/homebrew/bin/python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.Padding <span style="color:#f92672">import</span> pad
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> hashlib <span style="color:#f92672">import</span> sha256
+</span></span><span style="display:flex;"><span>FLAG <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;this_is_a_test_flag&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ShareScheme</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, key: bytes):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> len(key) <span style="color:#f92672">==</span> <span style="color:#ae81ff">128</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>key1 <span style="color:#f92672">=</span> bytes_to_long(key[:<span style="color:#ae81ff">64</span>])
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>key2 <span style="color:#f92672">=</span> bytes_to_long(key[<span style="color:#ae81ff">64</span>:])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getShare</span>(self):
+</span></span><span style="display:flex;"><span>        p <span style="color:#f92672">=</span> getPrime(<span style="color:#ae81ff">512</span>)
+</span></span><span style="display:flex;"><span>        a <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">2</span>, p <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        b <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">2</span>, p <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        c <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">2</span>, p <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        y <span style="color:#f92672">=</span> (a <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>key1 <span style="color:#f92672">*</span> b <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>key2 <span style="color:#f92672">*</span> c) <span style="color:#f92672">%</span> p
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> p, a, b, c, y
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">commit</span>(val: int):
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> getPrime(<span style="color:#ae81ff">512</span>)
+</span></span><span style="display:flex;"><span>    g <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">2</span>, p <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Commitment: </span><span style="color:#e6db74">{</span>p<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>g<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>pow(g, val, p)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>urandom(<span style="color:#ae81ff">128</span>)
+</span></span><span style="display:flex;"><span>ss <span style="color:#f92672">=</span> ShareScheme(key)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>real_key <span style="color:#f92672">=</span> sha256(key)<span style="color:#f92672">.</span>digest()[:<span style="color:#ae81ff">16</span>]
+</span></span><span style="display:flex;"><span>cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(real_key, AES<span style="color:#f92672">.</span>MODE_ECB)
+</span></span><span style="display:flex;"><span>enc_flag <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>encrypt(pad(FLAG, <span style="color:#ae81ff">16</span>))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;flag = </span><span style="color:#e6db74">{</span>enc_flag<span style="color:#f92672">.</span>hex()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    op <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;Option: &#34;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> op <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        p, a, b, c, y <span style="color:#f92672">=</span> ss<span style="color:#f92672">.</span>getShare()
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>p <span style="color:#e6db74">= }</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>a <span style="color:#e6db74">= }</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>b <span style="color:#e6db74">= }</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>c <span style="color:#e6db74">= }</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        commit(y)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        exit(<span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><h2 id="soulution">Soulution</h2>
+<p>We can get $a,b,c$ from share, $y=a+b<em>x_1+c</em>x_2$ and the commitment $(p,\ g,\ com)$ satisfy  $com=g^y\ (mod\ p)$.</p>
+<p>if $p-1$ has small factors $n$, using polig-hellman can recover $s=y\ (mod\ n)$</p>
+<p>Rewriting the equation,
+$$
+s+k<em>n=a+b</em>x_1+c*x_2\ (mod\ p)
+$$
+Choose the data, which $n&gt;2^{t}$ .</p>
+<p>Bit length of $x_1,\ x_2$ is 512, $s&lt;n,\ k&lt;\frac{p}{n}$</p>
+<p>So combine the relation through sufficient share equation using CRT.</p>
+<p>It looks like this,
+$$
+S+\sum n_i&rsquo;<em>k_i=A+B</em>x_1+C*x_2\ (\ mod\ \prod p_i)
+$$
+$k_i,x_1,x_2$ is unknown, we can apply LLL to solve this, the lattice is as follow
+$$
+\left[\begin{matrix}
+1&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;B\\
+&amp;1&amp;&amp;&amp;&amp;&amp;&amp;&amp;C\\
+&amp;&amp;2^{512}&amp;&amp;&amp;&amp;&amp;&amp;(A-S)\\
+&amp;&amp;&amp;2^{t}&amp;&amp;&amp;&amp;&amp;n_1&rsquo;\\
+&amp;&amp;&amp;&amp;&amp;\cdots&amp;\\
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;2^{t}&amp;n_l&rsquo;\\
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;\prod p_i
+\end{matrix}\right]
+$$</p>
+<p>The vector $(x_1,\ x_2,\ 2^{512},\ 2^t\cdot k_1,\ \cdots,\ 2^t\cdot k_l,\ 0)$ is in the lattice,</p>
+<p>We wish the vector is shorter enough, $2^{512<em>l+t</em>l+512}&gt;2^{512*(l+4)}$</p>
+<p>$\Rightarrow t&gt;\frac{512*3}{l}$</p>
+<p>I use the parameter $t=30,\ l=55$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> hashlib <span style="color:#f92672">import</span> sha256
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#context(log_level=&#34;debug&#34;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># def matrix_overview(BB):</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     for ii in range(BB.dimensions()[0]):</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         a = (&#39;%02d &#39;%ii)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         for jj in range(BB.dimensions()[1]):</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#             if BB[ii,jj] == 0:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#                 a += &#39; &#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#             else:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#                 a += &#39;X&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#             if BB.dimensions()[0] &lt; 60:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#                 a += &#39; &#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#         print(a)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DB <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>p <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> p <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">23</span>:
+</span></span><span style="display:flex;"><span>    DB<span style="color:#f92672">.</span>append(p)
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> next_prime(p)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bsgs</span>(g, y, bound, p):
+</span></span><span style="display:flex;"><span>    step <span style="color:#f92672">=</span> isqrt(bound)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    dir <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(step):
+</span></span><span style="display:flex;"><span>        dir[str(y<span style="color:#f92672">*</span>inverse_mod(pow(g, i, p), p)<span style="color:#f92672">%</span>p)] <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>    g_ <span style="color:#f92672">=</span> pow(g, step, p)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(step):
+</span></span><span style="display:flex;"><span>        idx <span style="color:#f92672">=</span> pow(g_, i, p)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> str(idx) <span style="color:#f92672">in</span> dir<span style="color:#f92672">.</span>keys():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> i<span style="color:#f92672">*</span>step <span style="color:#f92672">+</span> dir[str(idx)]
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_ord</span>(g, p, t):
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> p<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> n<span style="color:#f92672">%</span>t <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        n <span style="color:#f92672">=</span> n<span style="color:#f92672">//</span>t
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> pow(g, n, p) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">PH</span>(p, g, y):
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> p<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    dl <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    ml <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> DB:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> n<span style="color:#f92672">%</span>item <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            g_ <span style="color:#f92672">=</span> pow(g, n<span style="color:#f92672">//</span>item, p)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> g_ <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>: <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>            y_ <span style="color:#f92672">=</span> pow(y, n<span style="color:#f92672">//</span>item, p)
+</span></span><span style="display:flex;"><span>            d <span style="color:#f92672">=</span> bsgs(g_, y_, item, p)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">assert</span> pow(g_, d, p) <span style="color:#f92672">==</span> y_
+</span></span><span style="display:flex;"><span>            dl<span style="color:#f92672">.</span>append(d)
+</span></span><span style="display:flex;"><span>            ml<span style="color:#f92672">.</span>append(item)
+</span></span><span style="display:flex;"><span>    F <span style="color:#f92672">=</span> GF(p)
+</span></span><span style="display:flex;"><span>    g1 <span style="color:#f92672">=</span> F(pow(g, n<span style="color:#f92672">//</span>prod(ml), p))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> ml:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> test_ord(g, p, item):
+</span></span><span style="display:flex;"><span>            dl<span style="color:#f92672">.</span>remove(dl[ml<span style="color:#f92672">.</span>index(item)])
+</span></span><span style="display:flex;"><span>            ml<span style="color:#f92672">.</span>remove(item)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> prod(ml) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">30</span>: <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (crt(dl, ml), prod(ml))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">solver</span>(al, bl, cl, yl, nl, kl):
+</span></span><span style="display:flex;"><span>    bound <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>    t <span style="color:#f92672">=</span> <span style="color:#ae81ff">55</span>
+</span></span><span style="display:flex;"><span>    B <span style="color:#f92672">=</span> crt(bl, nl)
+</span></span><span style="display:flex;"><span>    C <span style="color:#f92672">=</span> crt(cl, nl)
+</span></span><span style="display:flex;"><span>    A <span style="color:#f92672">=</span> crt([al[i]<span style="color:#f92672">-</span>yl[i] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(al))], nl)
+</span></span><span style="display:flex;"><span>    D <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(t):
+</span></span><span style="display:flex;"><span>        D<span style="color:#f92672">.</span>append(crt([<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>i<span style="color:#f92672">+</span>[kl[i]]<span style="color:#f92672">+</span>[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>(t<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>i), nl))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    L <span style="color:#f92672">=</span> matrix(ZZ, t<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>, t<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    L[<span style="color:#ae81ff">0</span>, t<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> B
+</span></span><span style="display:flex;"><span>    L[<span style="color:#ae81ff">1</span>, t<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> C
+</span></span><span style="display:flex;"><span>    L[<span style="color:#ae81ff">2</span>, t<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> A
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>):
+</span></span><span style="display:flex;"><span>        L[_, _] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    L[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">512</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>, t<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>        L[_, _] <span style="color:#f92672">=</span> bound
+</span></span><span style="display:flex;"><span>        L[_, t<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> D[_<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    L[t<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>, t<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> prod(nl)
+</span></span><span style="display:flex;"><span>    mb <span style="color:#f92672">=</span> int(L<span style="color:#f92672">.</span>det()<span style="color:#f92672">^</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>(t<span style="color:#f92672">+</span><span style="color:#ae81ff">4</span>)))
+</span></span><span style="display:flex;"><span>    print(mb<span style="color:#f92672">.</span>bit_length())
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> mb<span style="color:#f92672">.</span>bit_length() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">512</span>
+</span></span><span style="display:flex;"><span>    basis <span style="color:#f92672">=</span> L<span style="color:#f92672">.</span>LLL()[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> basis[<span style="color:#ae81ff">0</span>], basis[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io <span style="color:#f92672">=</span> process(<span style="color:#e6db74">&#34;./chall.py&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>para <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;flag = &#34;</span>)
+</span></span><span style="display:flex;"><span>flag_enc <span style="color:#f92672">=</span> bytes<span style="color:#f92672">.</span>fromhex(io<span style="color:#f92672">.</span>recvline()[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>decode())
+</span></span><span style="display:flex;"><span>al, bl, cl, yl, nl, kl <span style="color:#f92672">=</span> [[] <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">6</span>)]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> len(al) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">55</span>:
+</span></span><span style="display:flex;"><span>    io<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">&#34;Option: &#34;</span>, <span style="color:#e6db74">&#39;1&#39;</span>)
+</span></span><span style="display:flex;"><span>    io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;p = &#34;</span>)
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> int(io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>))
+</span></span><span style="display:flex;"><span>    io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;a = &#34;</span>)
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> int(io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>))
+</span></span><span style="display:flex;"><span>    io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;b = &#34;</span>)
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">=</span> int(io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>))
+</span></span><span style="display:flex;"><span>    io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;c = &#34;</span>)
+</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">=</span> int(io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>))
+</span></span><span style="display:flex;"><span>    io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;Commitment: &#34;</span>)
+</span></span><span style="display:flex;"><span>    com <span style="color:#f92672">=</span> list(map(int, io<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>decode()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)))
+</span></span><span style="display:flex;"><span>    k <span style="color:#f92672">=</span> PH(<span style="color:#f92672">*</span>com)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> k:
+</span></span><span style="display:flex;"><span>        al<span style="color:#f92672">.</span>append(a)
+</span></span><span style="display:flex;"><span>        bl<span style="color:#f92672">.</span>append(b)
+</span></span><span style="display:flex;"><span>        cl<span style="color:#f92672">.</span>append(c)
+</span></span><span style="display:flex;"><span>        yl<span style="color:#f92672">.</span>append(k[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>        nl<span style="color:#f92672">.</span>append(p)
+</span></span><span style="display:flex;"><span>        kl<span style="color:#f92672">.</span>append(k[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Start solver&#34;</span>)
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> solver(al, bl, cl, yl, nl, kl)
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> long_to_bytes(abs(key[<span style="color:#ae81ff">0</span>]))<span style="color:#f92672">+</span>long_to_bytes(abs(key[<span style="color:#ae81ff">1</span>]))
+</span></span><span style="display:flex;"><span>real_key <span style="color:#f92672">=</span> sha256(key)<span style="color:#f92672">.</span>digest()[:<span style="color:#ae81ff">16</span>]
+</span></span><span style="display:flex;"><span>cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(real_key, AES<span style="color:#f92672">.</span>MODE_ECB)
+</span></span><span style="display:flex;"><span>flag <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>decrypt(flag_enc)
+</span></span><span style="display:flex;"><span>print(flag)
+</span></span></code></pre></div>]]></content:encoded>
+    </item>
+    
     <item>
       <title>CorCTF2022   corrupted curves&#43;</title>
       <link>https://r3t2b3d.github.io/posts/corctf2022-corrupted-curves&#43;/</link>
@@ -195,7 +418,8 @@ The equation can be converted the linear expression about $a_l,\ b_l,\ a_i,\ b_i
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> root:
 </span></span><span style="display:flex;"><span>    print(bytes<span style="color:#f92672">.</span>fromhex(hex(item[<span style="color:#ae81ff">0</span>])[<span style="color:#ae81ff">2</span>:]))
-</span></span></code></pre></div>]]></content:encoded>
+</span></span></code></pre></div><p>After that I find another way to solve the prolem using LLL, just 2 query needed. <a href="https://jsur.in/posts/2022-08-08-corctf-2022-crypto-writeups#corrupted-curves">joseph&rsquo;s wu</a></p>
+]]></content:encoded>
     </item>
     
   </channel>

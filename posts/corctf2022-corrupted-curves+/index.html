@@ -38,7 +38,7 @@
 <meta itemprop="description" content="corrupted curves&#43; task.py
 #!/opt/homebrew/bin/python3 from secrets import randbits from Crypto.Util.number import getPrime from random import randrange def square_root(a, p): if legendre_symbol(a, p) != 1: return 0 elif a == 0: return 0 elif p == 2: return 0 elif p % 4 == 3: return pow(a, (p &#43; 1) // 4, p) s = p - 1 e = 0 while s % 2 == 0: s //= 2 e &#43;= 1 n = 2 while legendre_symbol(n, p) !"><meta itemprop="datePublished" content="2023-10-26T00:44:01+08:00" />
 <meta itemprop="dateModified" content="2023-10-26T00:44:01+08:00" />
-<meta itemprop="wordCount" content="651">
+<meta itemprop="wordCount" content="669">
 <meta itemprop="keywords" content="" />
 
 <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -261,7 +261,8 @@ The equation can be converted the linear expression about $a_l,\ b_l,\ a_i,\ b_i
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> root:
 </span></span><span style="display:flex;"><span>    print(bytes<span style="color:#f92672">.</span>fromhex(hex(item[<span style="color:#ae81ff">0</span>])[<span style="color:#ae81ff">2</span>:]))
-</span></span></code></pre></div>
+</span></span></code></pre></div><p>After that I find another way to solve the prolem using LLL, just 2 query needed. <a href="https://jsur.in/posts/2022-08-08-corctf-2022-crypto-writeups#corrupted-curves">joseph&rsquo;s wu</a></p>
+
 </content>
 <p>
   

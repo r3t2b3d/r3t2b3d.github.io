@@ -67,7 +67,7 @@
 </span></span></code></pre></div><h2 id="soulution">Soulution</h2>
 <p>We can get $a,b,c$ from share, $y=a+b\cdot x_1+c\cdot x_2$</p>
 <p>Commitment $(p,\ g,\ com)$ is known which satisfy  $com=g^y\ (mod\ p)$.</p>
-<p>if $p-1$ has small factors $n$, using polig-hellman can recover $s=y\ (mod\ n)$</p>
+<p>if $p-1$ has small factors $n$, using pohlig-hellman can recover $s=y\ (mod\ n)$</p>
 <p>Rewriting the equation,
 $$
 s+k\cdot n=a+b\cdot x_1+c\cdot x_2\ (mod\ p)

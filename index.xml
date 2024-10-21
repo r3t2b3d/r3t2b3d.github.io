@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>🌈C@T :)</title>
-    <link>https://r3t2b3d.github.io/</link>
+    <link>https://h45h.fun/</link>
     <description>Recent content on 🌈C@T :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Dec 2023 23:26:07 +0800</lastBuildDate><atom:link href="https://r3t2b3d.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Dec 2023 23:26:07 +0800</lastBuildDate><atom:link href="https://h45h.fun/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>https://r3t2b3d.github.io/misc/</link>
+      <link>https://h45h.fun/misc/</link>
       <pubDate>Sun, 22 Sep 2024 13:46:42 +0800</pubDate>
       
-      <guid>https://r3t2b3d.github.io/misc/</guid>
+      <guid>https://h45h.fun/misc/</guid>
       <description> My partial crypto challenge, maybe you will like it. repo
 N1CTF 2023 Challenge Difficulty Tag e2D1P ★★★ LLL, Linear Algebra JQCTF-Final 2023 Challenge Difficulty Tag Br0kenAuth ★★★ HEC, HNP N1Junior 2024 Challenge Difficulty Tag Masquerade ★ DSA Forge IEV@L ★★ Isogeny Hash, Jail JQCTF-Quals 2024 Challenge Difficulty Tag BabyOracle1 ★☆ McEliece, Broadcast attack BabyOracle2 ★★ SIDH, GPST attack S2DH ★★★ SIDH, Torsion point attack </description>
       <content:encoded><![CDATA[<blockquote>
@@ -106,10 +106,10 @@ N1CTF 2023 Challenge Difficulty Tag e2D1P ★★★ LLL, Linear Algebra JQCTF-Fi
     
     <item>
       <title>N1CTF2021</title>
-      <link>https://r3t2b3d.github.io/posts/n1ctf2021/</link>
+      <link>https://h45h.fun/posts/n1ctf2021/</link>
       <pubDate>Tue, 12 Dec 2023 23:26:07 +0800</pubDate>
       
-      <guid>https://r3t2b3d.github.io/posts/n1ctf2021/</guid>
+      <guid>https://h45h.fun/posts/n1ctf2021/</guid>
       <description>Challenge Tags checkin Coppersmith, Math n1token1 HNP, Quadratic Sieve n1token2 Linear Algebra checkin task.py
 from Crypto.Util.number import * from secret import flag p = getPrime(512) q = getPrime(512) n = p*q x = 2021*p&#43;1120*q h = (inverse(x,n)&#43;x)%n e = 65537 c = pow(bytes_to_long(flag), e, n) print(&amp;#39;n =&amp;#39;, n) print(&amp;#39;c =&amp;#39;, c) print(&amp;#39;h =&amp;#39;, h) print(&amp;#39;p0 =&amp;#39;, p &amp;gt;&amp;gt; 490) # n = 124592923216765837982528839202733339713655242872717311800329884147642320435241014134533341888832955643881019336863843062120984698416851559736918389766033534214383285754683751490292848191235308958825702189602212123282858416891155764271492033289942894367802529296453904254165606918649570613530838932164490341793 # c = 119279592136391518960778700178474826421062018379899342254406783670889432182616590099071219538938202395671695005539485982613862823970622126945808954842683496637377151180225469409261800869161467402364879561554585345399947589618235872378329510108345004513054262809629917083343715270605155751457391599728436117833 # h = 115812446451372389307840774747986196103012628652193338630796109042038320397499948364970459686079508388755154855414919871257982157430015224489195284512204803276307238226421244647463550637321174259849701618681565567468929295822889537962306471780258801529979716298619553323655541002084406217484482271693997457806 # p0 = 4055618 Solution $h=\frac{1}{x}&#43;x$</description>
       <content:encoded><![CDATA[<table>

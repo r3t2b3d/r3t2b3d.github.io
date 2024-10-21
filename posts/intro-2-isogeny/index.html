@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intro 2 Isogeny | 🌈C@T :)</title>
+<meta name="title" content="Intro 2 Isogeny" />
+<meta name="description" content="TL:DR 考虑到同源的迷之上手难度对大🔥并不算友好，这里简单记录一些之前遇见过的或者自己出过的偏简单的同源题目，包括SIDH、CSIDH相关的不需要太深数学理解的东西。由于今年暑假 Crypto Hack 也是更新了一些与Isogeny相关的东西，比较推荐大家上手做一做，适合入门。
+Isogeny 首先需要了解 Isogeny（同源）是什么？
+简单来说就是同态映射，或者说是一个有理函数。对于曲线 $E_1,\ E_2$ ，映射 $\phi:E_1\rightarrow E_2$ 满足对于任意两点 $P,\ Q\in E_1$ 有 $\phi(P&#43;Q)=\phi(P)&#43;\phi(Q)$ ，我们称这样的函数 $\phi$ 为 $E_1$ 到 $E_2$ 的同源。
+对于一个同态我们经常会考虑它的原像、像以及核，而核是多数时候比较关心的，在这里 $Ker(\phi)=\set{X|\phi(X)=O}$
+在 SageMath 里可以通过一条曲线及其对应的核来定义映射 $\phi$，例如下面的代码
+sage: E = EllipticCurve(GF(11), [1, 0]) ....: P = E.random_element() ....: phi = E.isogeny(P) ....: phi.codomain() Elliptic Curve defined by y^2 = x^3 &#43; 2 over Finite Field of size 11 sage: phi Isogeny of degree 4 from Elliptic Curve defined by y^2 = x^3 &#43; x over Finite Field of size 11 to Elliptic Curve defined by y^2 = x^3 &#43; 2 over Finite Field of size 11 且核和映射之间满足下述关系，" />
+<meta name="keywords" content="" />
+
+
+
+
+
+
+  
+  <meta property="og:title" content="Intro 2 Isogeny" />
+<meta property="og:description" content="TL:DR 考虑到同源的迷之上手难度对大🔥并不算友好，这里简单记录一些之前遇见过的或者自己出过的偏简单的同源题目，包括SIDH、CSIDH相关的不需要太深数学理解的东西。由于今年暑假 Crypto Hack 也是更新了一些与Isogeny相关的东西，比较推荐大家上手做一做，适合入门。
+Isogeny 首先需要了解 Isogeny（同源）是什么？
+简单来说就是同态映射，或者说是一个有理函数。对于曲线 $E_1,\ E_2$ ，映射 $\phi:E_1\rightarrow E_2$ 满足对于任意两点 $P,\ Q\in E_1$ 有 $\phi(P&#43;Q)=\phi(P)&#43;\phi(Q)$ ，我们称这样的函数 $\phi$ 为 $E_1$ 到 $E_2$ 的同源。
+对于一个同态我们经常会考虑它的原像、像以及核，而核是多数时候比较关心的，在这里 $Ker(\phi)=\set{X|\phi(X)=O}$
+在 SageMath 里可以通过一条曲线及其对应的核来定义映射 $\phi$，例如下面的代码
+sage: E = EllipticCurve(GF(11), [1, 0]) ....: P = E.random_element() ....: phi = E.isogeny(P) ....: phi.codomain() Elliptic Curve defined by y^2 = x^3 &#43; 2 over Finite Field of size 11 sage: phi Isogeny of degree 4 from Elliptic Curve defined by y^2 = x^3 &#43; x over Finite Field of size 11 to Elliptic Curve defined by y^2 = x^3 &#43; 2 over Finite Field of size 11 且核和映射之间满足下述关系，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://r3t2b3d.github.io/posts/intro-2-isogeny/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-14T18:09:10+08:00" />
+<meta property="article:modified_time" content="2024-09-14T18:09:10+08:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Intro 2 Isogeny"/>
+<meta name="twitter:description" content="TL:DR 考虑到同源的迷之上手难度对大🔥并不算友好，这里简单记录一些之前遇见过的或者自己出过的偏简单的同源题目，包括SIDH、CSIDH相关的不需要太深数学理解的东西。由于今年暑假 Crypto Hack 也是更新了一些与Isogeny相关的东西，比较推荐大家上手做一做，适合入门。
+Isogeny 首先需要了解 Isogeny（同源）是什么？
+简单来说就是同态映射，或者说是一个有理函数。对于曲线 $E_1,\ E_2$ ，映射 $\phi:E_1\rightarrow E_2$ 满足对于任意两点 $P,\ Q\in E_1$ 有 $\phi(P&#43;Q)=\phi(P)&#43;\phi(Q)$ ，我们称这样的函数 $\phi$ 为 $E_1$ 到 $E_2$ 的同源。
+对于一个同态我们经常会考虑它的原像、像以及核，而核是多数时候比较关心的，在这里 $Ker(\phi)=\set{X|\phi(X)=O}$
+在 SageMath 里可以通过一条曲线及其对应的核来定义映射 $\phi$，例如下面的代码
+sage: E = EllipticCurve(GF(11), [1, 0]) ....: P = E.random_element() ....: phi = E.isogeny(P) ....: phi.codomain() Elliptic Curve defined by y^2 = x^3 &#43; 2 over Finite Field of size 11 sage: phi Isogeny of degree 4 from Elliptic Curve defined by y^2 = x^3 &#43; x over Finite Field of size 11 to Elliptic Curve defined by y^2 = x^3 &#43; 2 over Finite Field of size 11 且核和映射之间满足下述关系，"/>
+
+
+  
+  <meta itemprop="name" content="Intro 2 Isogeny">
+<meta itemprop="description" content="TL:DR 考虑到同源的迷之上手难度对大🔥并不算友好，这里简单记录一些之前遇见过的或者自己出过的偏简单的同源题目，包括SIDH、CSIDH相关的不需要太深数学理解的东西。由于今年暑假 Crypto Hack 也是更新了一些与Isogeny相关的东西，比较推荐大家上手做一做，适合入门。
+Isogeny 首先需要了解 Isogeny（同源）是什么？
+简单来说就是同态映射，或者说是一个有理函数。对于曲线 $E_1,\ E_2$ ，映射 $\phi:E_1\rightarrow E_2$ 满足对于任意两点 $P,\ Q\in E_1$ 有 $\phi(P&#43;Q)=\phi(P)&#43;\phi(Q)$ ，我们称这样的函数 $\phi$ 为 $E_1$ 到 $E_2$ 的同源。
+对于一个同态我们经常会考虑它的原像、像以及核，而核是多数时候比较关心的，在这里 $Ker(\phi)=\set{X|\phi(X)=O}$
+在 SageMath 里可以通过一条曲线及其对应的核来定义映射 $\phi$，例如下面的代码
+sage: E = EllipticCurve(GF(11), [1, 0]) ....: P = E.random_element() ....: phi = E.isogeny(P) ....: phi.codomain() Elliptic Curve defined by y^2 = x^3 &#43; 2 over Finite Field of size 11 sage: phi Isogeny of degree 4 from Elliptic Curve defined by y^2 = x^3 &#43; x over Finite Field of size 11 to Elliptic Curve defined by y^2 = x^3 &#43; 2 over Finite Field of size 11 且核和映射之间满足下述关系，"><meta itemprop="datePublished" content="2024-09-14T18:09:10+08:00" />
+<meta itemprop="dateModified" content="2024-09-14T18:09:10+08:00" />
+<meta itemprop="wordCount" content="123">
+<meta itemprop="keywords" content="" />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="/style.min.css" rel="stylesheet">
+
+  
+  <link href="/syntax.min.css" rel="stylesheet">
+
+  
+
+  
+</head>
+
+<body>
+  <header><a class="skip-link" href="#main-content">Skip to main content</a>
+
+<a href="/" class="title"><h1>🌈C@T :)</h1></a>
+<nav>
+<a href='https://r3t2b3d.github.io/posts'>Blog</a>
+<a href='https://r3t2b3d.github.io/'>About me</a>
+<a href='https://r3t2b3d.github.io/misc'>Misc</a>
+
+
+
+
+
+
+
+</nav>
+</header>
+  <main id="main-content">
+
+<h1>Intro 2 Isogeny</h1>
+<p class="byline">
+  <time datetime='2024-09-14' pubdate>
+    2024-09-14
+  </time>
+  
+</p>
+
+<content>
+  <h2 id="tldr">TL:DR</h2>
+<blockquote>
+<p><strong>考虑到同源的迷之上手难度对大🔥并不算友好，这里简单记录一些之前遇见过的或者自己出过的偏简单的同源题目，包括SIDH、CSIDH相关的不需要太深数学理解的东西。由于今年暑假 Crypto Hack 也是更新了一些与Isogeny相关的东西，比较推荐大家上手做一做，适合入门。</strong></p>
+</blockquote>
+<h2 id="isogeny">Isogeny</h2>
+<blockquote>
+<p>首先需要了解 Isogeny（同源）是什么？</p>
+</blockquote>
+<p>简单来说就是同态映射，或者说是一个有理函数。对于曲线 $E_1,\ E_2$ ，映射 $\phi:E_1\rightarrow E_2$ 满足对于任意两点 $P,\ Q\in E_1$ 有 $\phi(P+Q)=\phi(P)+\phi(Q)$ ，我们称这样的函数 $\phi$ 为 $E_1$ 到 $E_2$ 的同源。</p>
+<p>对于一个同态我们经常会考虑它的原像、像以及核，而核是多数时候比较关心的，在这里 $Ker(\phi)=\set{X|\phi(X)=O}$</p>
+<p>在 SageMath 里可以通过一条曲线及其对应的核来定义映射 $\phi$，例如下面的代码</p>
+<pre tabindex="0"><code>sage: E = EllipticCurve(GF(11), [1, 0])
+....: P = E.random_element()
+....: phi = E.isogeny(P)
+....: phi.codomain()
+Elliptic Curve defined by y^2 = x^3 + 2 over Finite Field of size 11
+sage: phi
+Isogeny of degree 4 from Elliptic Curve defined by y^2 = x^3 + x over Finite Field of size 11 to Elliptic Curve defined by y^2 = x^3 + 2 over Finite Field of size 11
+</code></pre><p>且核和映射之间满足下述关系，</p>
+<pre tabindex="0"><code>sage: P.order() == phi.degree()
+True
+</code></pre><p>实际上我上面的表述并不严谨，这里的核很明显应该为一个集合，但这里只是将 $P$ 作为了参数，实际上这代表了这样一个集合 $\set{k\cdot P|k\in \mathcal{Z}}$，更简洁的可以把这记为 n-torsion （其中 $n$ 为 $P$ 的阶）。通过实验，我们可以发现同源的度数和核的势相等，这里应该有更严谨的说法，限于水平只能通过类似实验的方式去验证同源的大多数性质了。</p>
+<blockquote>
+<p>基于同源的困难问题是什么？</p>
+</blockquote>
+<p>这大概是入手同源时最费解的一个问题了，不同于此前接触过的基于大整数分解、离散对数、格上短向量问题，同源的困难性理解起来有点抽象。简单来讲就是给定原像和像无法还原它们间的映射 $\phi$，当然这个困难程度和我们选择的参数有关系，对于小规模参数下的问题我们只需要暴力即可求解。</p>
+
+</content>
+<p>
+  
+</p>
+
+
+  </main>
+  <footer>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
+
+<small>
+
+</small></footer>
+
+    
+</body>
+
+</html>

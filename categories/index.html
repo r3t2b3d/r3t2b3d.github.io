@@ -5,7 +5,7 @@
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Categories | 🌈C@T :)</title>
+<title>Categories | echo :)</title>
 <meta name="title" content="Categories" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -42,14 +42,14 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" href="https://h45h.fun/categories/index.xml" title="🌈C@T :)" />
+  <link rel="alternate" type="application/rss+xml" href="https://h45h.fun/categories/index.xml" title="echo :)" />
   
 </head>
 
 <body>
   <header><a class="skip-link" href="#main-content">Skip to main content</a>
 
-<a href="/" class="title"><h1>🌈C@T :)</h1></a>
+<a href="/" class="title"><h1>echo :)</h1></a>
 <nav>
 <a href='https://h45h.fun/posts'>Blog</a>
 <a href='https://h45h.fun/'>About me</a>
@@ -86,6 +86,36 @@
 </small></footer>
 
     
-</body>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggleButton = document.getElementById("toggle-toc");
+      const tocContent = document.getElementById("toc-content");
+  
+      
+      toggleButton.addEventListener("click", function() {
+        if (tocContent.style.display === "none") {
+          tocContent.style.display = "block";
+          toggleButton.textContent = "➖";
+        } else {
+          tocContent.style.display = "none";
+          toggleButton.textContent = "➕";
+        }
+      });
+  
+      
+      tocContent.style.display = "none";
+      toggleButton.textContent = "➕";
+  
+      
+      document.querySelectorAll('#table-of-contents a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script></body>
 </html>

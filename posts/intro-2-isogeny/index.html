@@ -1,19 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>echo :)</title>
-    <link>https://h45h.fun/</link>
-    <description>Recent content on echo :)</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 01 Nov 2024 18:09:10 +0800</lastBuildDate><atom:link href="https://h45h.fun/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Intro 2 Isogeny</title>
-      <link>https://h45h.fun/posts/intro-2-isogeny/</link>
-      <pubDate>Fri, 01 Nov 2024 18:09:10 +0800</pubDate>
-      
-      <guid>https://h45h.fun/posts/intro-2-isogeny/</guid>
-      <description>TL:DR 一些关于 SIDH、CSIDH 的直观理解，以及此前出过或遇见的偏简单适合入手的同源题目。
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intro 2 Isogeny | echo :)</title>
+<meta name="title" content="Intro 2 Isogeny" />
+<meta name="description" content="TL:DR 一些关于 SIDH、CSIDH 的直观理解，以及此前出过或遇见的偏简单适合入手的同源题目。
 今年暑假 Crypto Hack 更新了一些与 Isogeny 相关的东西，比较推荐上手做一做，适合入门。
 Isogeny Background 曲线同源不同于传统密码学中曲线离散对数(ECDLP)的内容，在此前我们更多地研究已知等式 $[a]P=Q$ 中的 $P,Q$ 要求找到 $[a]$。这相当于是考虑点之间的关系，但在曲线同源中研究的是曲线之间的关系。由于量子计算机以及 Shor 算法的产生，后量子密码学得到了很多的关注，基于曲线同源的密码学就是其中一种，在此前Nist后量子的候选中还有一些其他的诸如基于格，基于编码，基于多变量，基于哈希函数，基于MPC的密码体系等等。相比其他体系基于曲线同源的密码学优势在于其密钥短，但缺点是计算速度较慢。
 Curve Isogeny（曲线同源，下简记为同源）是什么？🤔
@@ -21,8 +15,120 @@ Curve Isogeny（曲线同源，下简记为同源）是什么？🤔
 对于一个态射我们经常会考虑它的原像、像以及核($Ker(\phi)=\set{X|\phi(X)=O}$)。在与同源相关的密码系统中通常做的最多的有两种操作，在给出曲线和核的情况下计算同源，在已知同源的情况下评估原像上点在像上对应的点。
 实际上除了有关曲线的同源还有各种奇怪数学结构的同源问题，像编码同源或者多变量同源等，就看怎么定义映射了。
 在 SageMath 通过原像及对应的核定义同源 $\phi$
-sage: ells = [*primes(3, 250), 661] sage: p = 4 * prod(ells) - 1 sage: F = GF(p, &amp;#39;i&amp;#39;) sage: A = 0 sage: E = EllipticCurve(F, [0, A, 0, 1, 0]) sage: while not (P := (p &#43; 1) // 3 * E.</description>
-      <content:encoded><![CDATA[<h1 id="tldr">TL:DR</h1>
+sage: ells = [*primes(3, 250), 661] sage: p = 4 * prod(ells) - 1 sage: F = GF(p, &#39;i&#39;) sage: A = 0 sage: E = EllipticCurve(F, [0, A, 0, 1, 0]) sage: while not (P := (p &#43; 1) // 3 * E." />
+<meta name="keywords" content="" />
+
+
+
+
+
+
+  
+  <meta property="og:title" content="Intro 2 Isogeny" />
+<meta property="og:description" content="TL:DR 一些关于 SIDH、CSIDH 的直观理解，以及此前出过或遇见的偏简单适合入手的同源题目。
+今年暑假 Crypto Hack 更新了一些与 Isogeny 相关的东西，比较推荐上手做一做，适合入门。
+Isogeny Background 曲线同源不同于传统密码学中曲线离散对数(ECDLP)的内容，在此前我们更多地研究已知等式 $[a]P=Q$ 中的 $P,Q$ 要求找到 $[a]$。这相当于是考虑点之间的关系，但在曲线同源中研究的是曲线之间的关系。由于量子计算机以及 Shor 算法的产生，后量子密码学得到了很多的关注，基于曲线同源的密码学就是其中一种，在此前Nist后量子的候选中还有一些其他的诸如基于格，基于编码，基于多变量，基于哈希函数，基于MPC的密码体系等等。相比其他体系基于曲线同源的密码学优势在于其密钥短，但缺点是计算速度较慢。
+Curve Isogeny（曲线同源，下简记为同源）是什么？🤔
+同源其实就是一种态射，或者说是一个有理函数。对于曲线 $E_1,E_2$ ，映射 $\phi:E_1\rightarrow E_2$ 满足对于任意两点 $P,Q\in E_1$ 有 $\phi(P&#43;Q)=\phi(P)&#43;\phi(Q)$ ，并且 $\phi(O_{E_1})=O_{E_2}$ ，我们称这样的函数 $\phi$ 为曲线 $E_1$ 到 $E_2$ 的同源。
+对于一个态射我们经常会考虑它的原像、像以及核($Ker(\phi)=\set{X|\phi(X)=O}$)。在与同源相关的密码系统中通常做的最多的有两种操作，在给出曲线和核的情况下计算同源，在已知同源的情况下评估原像上点在像上对应的点。
+实际上除了有关曲线的同源还有各种奇怪数学结构的同源问题，像编码同源或者多变量同源等，就看怎么定义映射了。
+在 SageMath 通过原像及对应的核定义同源 $\phi$
+sage: ells = [*primes(3, 250), 661] sage: p = 4 * prod(ells) - 1 sage: F = GF(p, &#39;i&#39;) sage: A = 0 sage: E = EllipticCurve(F, [0, A, 0, 1, 0]) sage: while not (P := (p &#43; 1) // 3 * E." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://h45h.fun/posts/intro-2-isogeny/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-11-01T18:09:10+08:00" />
+<meta property="article:modified_time" content="2024-11-01T18:09:10+08:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Intro 2 Isogeny"/>
+<meta name="twitter:description" content="TL:DR 一些关于 SIDH、CSIDH 的直观理解，以及此前出过或遇见的偏简单适合入手的同源题目。
+今年暑假 Crypto Hack 更新了一些与 Isogeny 相关的东西，比较推荐上手做一做，适合入门。
+Isogeny Background 曲线同源不同于传统密码学中曲线离散对数(ECDLP)的内容，在此前我们更多地研究已知等式 $[a]P=Q$ 中的 $P,Q$ 要求找到 $[a]$。这相当于是考虑点之间的关系，但在曲线同源中研究的是曲线之间的关系。由于量子计算机以及 Shor 算法的产生，后量子密码学得到了很多的关注，基于曲线同源的密码学就是其中一种，在此前Nist后量子的候选中还有一些其他的诸如基于格，基于编码，基于多变量，基于哈希函数，基于MPC的密码体系等等。相比其他体系基于曲线同源的密码学优势在于其密钥短，但缺点是计算速度较慢。
+Curve Isogeny（曲线同源，下简记为同源）是什么？🤔
+同源其实就是一种态射，或者说是一个有理函数。对于曲线 $E_1,E_2$ ，映射 $\phi:E_1\rightarrow E_2$ 满足对于任意两点 $P,Q\in E_1$ 有 $\phi(P&#43;Q)=\phi(P)&#43;\phi(Q)$ ，并且 $\phi(O_{E_1})=O_{E_2}$ ，我们称这样的函数 $\phi$ 为曲线 $E_1$ 到 $E_2$ 的同源。
+对于一个态射我们经常会考虑它的原像、像以及核($Ker(\phi)=\set{X|\phi(X)=O}$)。在与同源相关的密码系统中通常做的最多的有两种操作，在给出曲线和核的情况下计算同源，在已知同源的情况下评估原像上点在像上对应的点。
+实际上除了有关曲线的同源还有各种奇怪数学结构的同源问题，像编码同源或者多变量同源等，就看怎么定义映射了。
+在 SageMath 通过原像及对应的核定义同源 $\phi$
+sage: ells = [*primes(3, 250), 661] sage: p = 4 * prod(ells) - 1 sage: F = GF(p, &#39;i&#39;) sage: A = 0 sage: E = EllipticCurve(F, [0, A, 0, 1, 0]) sage: while not (P := (p &#43; 1) // 3 * E."/>
+
+
+  
+  <meta itemprop="name" content="Intro 2 Isogeny">
+<meta itemprop="description" content="TL:DR 一些关于 SIDH、CSIDH 的直观理解，以及此前出过或遇见的偏简单适合入手的同源题目。
+今年暑假 Crypto Hack 更新了一些与 Isogeny 相关的东西，比较推荐上手做一做，适合入门。
+Isogeny Background 曲线同源不同于传统密码学中曲线离散对数(ECDLP)的内容，在此前我们更多地研究已知等式 $[a]P=Q$ 中的 $P,Q$ 要求找到 $[a]$。这相当于是考虑点之间的关系，但在曲线同源中研究的是曲线之间的关系。由于量子计算机以及 Shor 算法的产生，后量子密码学得到了很多的关注，基于曲线同源的密码学就是其中一种，在此前Nist后量子的候选中还有一些其他的诸如基于格，基于编码，基于多变量，基于哈希函数，基于MPC的密码体系等等。相比其他体系基于曲线同源的密码学优势在于其密钥短，但缺点是计算速度较慢。
+Curve Isogeny（曲线同源，下简记为同源）是什么？🤔
+同源其实就是一种态射，或者说是一个有理函数。对于曲线 $E_1,E_2$ ，映射 $\phi:E_1\rightarrow E_2$ 满足对于任意两点 $P,Q\in E_1$ 有 $\phi(P&#43;Q)=\phi(P)&#43;\phi(Q)$ ，并且 $\phi(O_{E_1})=O_{E_2}$ ，我们称这样的函数 $\phi$ 为曲线 $E_1$ 到 $E_2$ 的同源。
+对于一个态射我们经常会考虑它的原像、像以及核($Ker(\phi)=\set{X|\phi(X)=O}$)。在与同源相关的密码系统中通常做的最多的有两种操作，在给出曲线和核的情况下计算同源，在已知同源的情况下评估原像上点在像上对应的点。
+实际上除了有关曲线的同源还有各种奇怪数学结构的同源问题，像编码同源或者多变量同源等，就看怎么定义映射了。
+在 SageMath 通过原像及对应的核定义同源 $\phi$
+sage: ells = [*primes(3, 250), 661] sage: p = 4 * prod(ells) - 1 sage: F = GF(p, &#39;i&#39;) sage: A = 0 sage: E = EllipticCurve(F, [0, A, 0, 1, 0]) sage: while not (P := (p &#43; 1) // 3 * E."><meta itemprop="datePublished" content="2024-11-01T18:09:10+08:00" />
+<meta itemprop="dateModified" content="2024-11-01T18:09:10+08:00" />
+<meta itemprop="wordCount" content="1004">
+<meta itemprop="keywords" content="" />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  
+  <link href="/style.min.css" rel="stylesheet">
+
+  
+  <link href="/syntax.min.css" rel="stylesheet">
+
+  
+
+  
+</head>
+
+<body>
+  <header><a class="skip-link" href="#main-content">Skip to main content</a>
+
+<a href="/" class="title"><h1>echo :)</h1></a>
+<nav>
+<a href='https://h45h.fun/posts'>Blog</a>
+<a href='https://h45h.fun/'>About me</a>
+<a href='https://h45h.fun/misc'>Misc</a>
+
+
+
+
+
+
+
+</nav>
+</header>
+  <main id="main-content">
+
+<h1>Intro 2 Isogeny</h1>
+<p class="byline">
+  <time datetime='2024-11-01' pubdate>
+    2024-11-01
+  </time>
+  
+</p>
+
+
+<div id="table-of-contents" class="toc-container">
+  <h2 class="toc-title">:: Contents</h2>
+  
+  <div id="toc-content" class="toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#basics">Basics</a></li>
+    <li><a href="#sidh">SIDH</a></li>
+    <li><a href="#csidh">CSIDH</a></li>
+    <li><a href="#challenges">Challenges</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<content>
+  <h1 id="tldr">TL:DR</h1>
 <blockquote>
 <p>一些关于 SIDH、CSIDH 的直观理解，以及此前出过或遇见的偏简单适合入手的同源题目。</p>
 </blockquote>
@@ -271,382 +377,72 @@ sage: Eb = csidh(0, priv2)
 <p>[3] Mathematics of Isogeny Based Cryptography <a href="https://arxiv.org/pdf/1711.04062">↩</a></p>
 <p>[4] CSIDH方案短课（沙龙）<a href="https://su1yu4n.github.io/2024/10/15/CSIDH%E6%96%B9%E6%A1%88%E5%88%86%E4%BA%AB/">↩</a></p>
 <p>[5] Divisors and Pairings <a href="https://klwu.co/knowledge/ec-basics-3-divisors/">↩</a></p>
-]]></content:encoded>
-    </item>
+
+</content>
+<p>
+  
+</p>
+
+
+  </main>
+  <footer>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+
+
+<small>
+
+</small></footer>
+
     
-    <item>
-      <title></title>
-      <link>https://h45h.fun/misc/</link>
-      <pubDate>Sun, 22 Sep 2024 13:46:42 +0800</pubDate>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggleButton = document.getElementById("toggle-toc");
+      const tocContent = document.getElementById("toc-content");
+  
       
-      <guid>https://h45h.fun/misc/</guid>
-      <description>CTF-Challenges My partial crypto challenge, maybe you will like it. repo
-N1CTF 2023 Challenge Difficulty Tag e2D1P ★★★ LLL, Linear Algebra JQCTF-Final 2023 Challenge Difficulty Tag Br0kenAuth ★★★ HEC, HNP N1Junior 2024 Challenge Difficulty Tag IEV@L ★★ Isogeny Hash, Jail JQCTF-Quals 2024 Challenge Difficulty Tag S2DH&#43; ★★★ SIDH, Torsion point attack N1CTF 2024 Challenge Difficulty Tag M4sTeriX ★★★ ISD, HSSP, MT19937 </description>
-      <content:encoded><![CDATA[<h2 id="ctf-challenges">CTF-Challenges</h2>
-<blockquote>
-<p>My partial crypto challenge, maybe you will like it. <a href="https://github.com/hash-hash/My-CTF-Challenges">repo</a></p>
-</blockquote>
-<h4 id="n1ctf-2023"><em>N1CTF 2023</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">e2D1P</td>
-<td style="text-align:center">★★★</td>
-<td style="text-align:center">LLL, Linear Algebra</td>
-</tr>
-</tbody>
-</table>
-<h4 id="jqctf-final-2023"><em>JQCTF-Final 2023</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Br0kenAuth</td>
-<td style="text-align:center">★★★</td>
-<td style="text-align:center">HEC, HNP</td>
-</tr>
-</tbody>
-</table>
-<h4 id="n1junior-2024"><em>N1Junior 2024</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">IEV@L</td>
-<td style="text-align:center">★★</td>
-<td style="text-align:center">Isogeny Hash, Jail</td>
-</tr>
-</tbody>
-</table>
-<h4 id="jqctf-quals-2024"><em>JQCTF-Quals 2024</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">S2DH+</td>
-<td style="text-align:center">★★★</td>
-<td style="text-align:center">SIDH, Torsion point attack</td>
-</tr>
-</tbody>
-</table>
-<h4 id="n1ctf-2024"><em>N1CTF 2024</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">M4sTeriX</td>
-<td style="text-align:center">★★★</td>
-<td style="text-align:center">ISD, HSSP, MT19937</td>
-</tr>
-</tbody>
-</table>
-]]></content:encoded>
-    </item>
-    
-    <item>
-      <title>N1CTF2021</title>
-      <link>https://h45h.fun/posts/n1ctf2021/</link>
-      <pubDate>Tue, 12 Dec 2023 23:26:07 +0800</pubDate>
+      toggleButton.addEventListener("click", function() {
+        if (tocContent.style.display === "none") {
+          tocContent.style.display = "block";
+          toggleButton.textContent = "➖";
+        } else {
+          tocContent.style.display = "none";
+          toggleButton.textContent = "➕";
+        }
+      });
+  
       
-      <guid>https://h45h.fun/posts/n1ctf2021/</guid>
-      <description>Challenge Tags checkin Coppersmith, Math n1token1 HNP, Quadratic Sieve n1token2 Linear Algebra checkin task.py
-from Crypto.Util.number import * from secret import flag p = getPrime(512) q = getPrime(512) n = p*q x = 2021*p&#43;1120*q h = (inverse(x,n)&#43;x)%n e = 65537 c = pow(bytes_to_long(flag), e, n) print(&amp;#39;n =&amp;#39;, n) print(&amp;#39;c =&amp;#39;, c) print(&amp;#39;h =&amp;#39;, h) print(&amp;#39;p0 =&amp;#39;, p &amp;gt;&amp;gt; 490) # n = 124592923216765837982528839202733339713655242872717311800329884147642320435241014134533341888832955643881019336863843062120984698416851559736918389766033534214383285754683751490292848191235308958825702189602212123282858416891155764271492033289942894367802529296453904254165606918649570613530838932164490341793 # c = 119279592136391518960778700178474826421062018379899342254406783670889432182616590099071219538938202395671695005539485982613862823970622126945808954842683496637377151180225469409261800869161467402364879561554585345399947589618235872378329510108345004513054262809629917083343715270605155751457391599728436117833 # h = 115812446451372389307840774747986196103012628652193338630796109042038320397499948364970459686079508388755154855414919871257982157430015224489195284512204803276307238226421244647463550637321174259849701618681565567468929295822889537962306471780258801529979716298619553323655541002084406217484482271693997457806 # p0 = 4055618 Solution $h=\frac{1}{x}&#43;x$</description>
-      <content:encoded><![CDATA[<table>
-<thead>
-<tr>
-<th>Challenge</th>
-<th>Tags</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#checkin">checkin</a></td>
-<td>Coppersmith, Math</td>
-</tr>
-<tr>
-<td><a href="#n1token1">n1token1</a></td>
-<td>HNP, Quadratic Sieve</td>
-</tr>
-<tr>
-<td><a href="#n1token2">n1token2</a></td>
-<td>Linear Algebra</td>
-</tr>
-</tbody>
-</table>
-<h2 id="checkin">checkin</h2>
-<p><strong>task.py</strong></p>
-<pre tabindex="0"><code>from Crypto.Util.number import *
-from secret import flag
- 
-p = getPrime(512)
-q = getPrime(512)
-n = p*q
-x = 2021*p+1120*q
-h = (inverse(x,n)+x)%n
-e = 65537
-c = pow(bytes_to_long(flag), e, n)
- 
-print(&#39;n =&#39;, n)
-print(&#39;c =&#39;, c)
-print(&#39;h =&#39;, h)
-print(&#39;p0 =&#39;, p &gt;&gt; 490)
- 
-# n = 124592923216765837982528839202733339713655242872717311800329884147642320435241014134533341888832955643881019336863843062120984698416851559736918389766033534214383285754683751490292848191235308958825702189602212123282858416891155764271492033289942894367802529296453904254165606918649570613530838932164490341793
-# c = 119279592136391518960778700178474826421062018379899342254406783670889432182616590099071219538938202395671695005539485982613862823970622126945808954842683496637377151180225469409261800869161467402364879561554585345399947589618235872378329510108345004513054262809629917083343715270605155751457391599728436117833
-# h = 115812446451372389307840774747986196103012628652193338630796109042038320397499948364970459686079508388755154855414919871257982157430015224489195284512204803276307238226421244647463550637321174259849701618681565567468929295822889537962306471780258801529979716298619553323655541002084406217484482271693997457806
-# p0 = 4055618
-</code></pre><h2 id="solution">Solution</h2>
-<p>$h=\frac{1}{x}+x$</p>
-<p>$\Rightarrow x^2-h\cdot x+1(mod\ n)$</p>
-<p>We can get high bits of q through the known p high bits.</p>
-<p>$x=2021\cdot p+1120\cdot q=(2021\cdot(2^{490}\cdot p_0+p_1)+1120\cdot(2^{490}\cdot q_0+q_1))$</p>
-<p>The unknown part of x is less than 501 bits</p>
-<p><code>small_roots</code> can solve this with <code>epsilon=0.02</code></p>
-<p>It&rsquo;s higher than the theoretical bound, may be LLL sometimes do better.</p>
-<pre tabindex="0"><code>n = 124592923216765837982528839202733339713655242872717311800329884147642320435241014134533341888832955643881019336863843062120984698416851559736918389766033534214383285754683751490292848191235308958825702189602212123282858416891155764271492033289942894367802529296453904254165606918649570613530838932164490341793
-c = 119279592136391518960778700178474826421062018379899342254406783670889432182616590099071219538938202395671695005539485982613862823970622126945808954842683496637377151180225469409261800869161467402364879561554585345399947589618235872378329510108345004513054262809629917083343715270605155751457391599728436117833
-h = 115812446451372389307840774747986196103012628652193338630796109042038320397499948364970459686079508388755154855414919871257982157430015224489195284512204803276307238226421244647463550637321174259849701618681565567468929295822889537962306471780258801529979716298619553323655541002084406217484482271693997457806
-p0 = 4055618
-q0 = None
-
-head = n&gt;&gt;(1024-22)
-for i in range(2**22):
-    if (i*p0)&gt;&gt;22 == head:
-        q0 = i
-        break
-
-PR.&lt;x&gt; = PolynomialRing(Zmod(n))
-g = x+2021*2^490*p0+1120*2^490*q0
-f = g^2-h*g+1
-
-root = ZZ(f.small_roots(X=2^500, beta=1, epsilon=0.02)[0])
-x0 = root+2021*2^490*p0+1120*2^490*q0
-diff = isqrt(x0^2-4*2021*1120*n)
-p = (x0+diff)//4042
-q = (x0-diff)//2240
-phi = (p-1)*(q-1)
-d = inverse_mod(0x10001, phi)
-m = pow(c, d, n)
-print(bytes.fromhex(hex(m)[2:]))
-</code></pre><h2 id="n1token1">n1token1</h2>
-<p><strong>task.py</strong></p>
-<pre tabindex="0"><code>from Crypto.Util.number import *
-import random
-from secret import flag
- 
-def gettoken(c):
-    X = 0
-    while ((pow(X, (p-1)//2, p)!=1) or (pow(X, (q-1)//2, q)!=1)):
-        X = 1
-        while X.bit_length() &lt; 920:
-            X *= random.choice(primes)
-    xp = pow(X, (p + 1)//4, p)
-    xq = pow(X, (q + 1)//4, q)
-    xp = random.choice([xp,-xp%p])
-    xq = random.choice([xq,-xq%q])
-    x = c * (xp*inverse(q,p)*q + xq*inverse(p,q)*p) % n
-    return x
- 
-def getmyPrime(nbits):
-    p = getPrime(nbits)
-    while(p%4==1):
-        p = getPrime(nbits)
-    return p
- 
-primes = random.sample(sieve_base, 920)
-p = getmyPrime(512)
-q = getmyPrime(512)
-e = 65537
-n = p*q
-c = pow(bytes_to_long(flag), e, n)
- 
-with open(&#34;output.txt&#34;, &#34;w&#34;)as f:
-    f.write(&#34;n = &#34; + str(n) + &#34;\n&#34;)
-    for i in range(920):
-        f.write(&#34;Token #&#34;+str(i+1)+&#39;: &#39;+str(gettoken(c))+&#39;\n&#39;)
-</code></pre><h2 id="solution-1">Solution</h2>
-<p>The token generating as follow,</p>
-<p>$tk_i = c\cdot \sqrt{X_i}(mod\ n)$</p>
-<p>$\Rightarrow tk_i^2\cdot(c^{-2})=X_i(mod\ n)$ Where $X&lt;2^{940}$</p>
-<p>So we can solve this hidden number problem to recover $X_i$.</p>
-<p>$\Rightarrow tk_0^2\cdot (tk_i^2)^{-1}=X_0\cdot X_i^{-1}(mod\ n)$</p>
-<p>Rewriting the $X_i$ with primes&rsquo; exponent, and solve the kernel of exponent matrix in $F_2$ (only care parity)</p>
-<p>Finally, we can construct $a^2=b^2(mod\ n)$, it&rsquo;s probably get the factors of n.</p>
-<pre tabindex="0"><code>from Crypto.Util.number import *
-from functools import reduce
-
-f = open(&#39;output.txt&#39;, &#39;r&#39;)
-f.read(4)
-n = int(f.readline())
-tk = []
-for _ in range(920):
-    tk_ = f.readline()
-    st = tk_.index(&#39;:&#39;)
-    tk.append(int(tk_[st+1:]))
-
-def solver_hnp(s):
-    L = matrix(QQ, 101, 101)
-    L[0, 0] = 2^(940-1024)
-    for _ in range(100):
-        L[0, _+1] = s[_]**2%n
-        L[_+1, _+1] = n
-    basis = L.LLL()[1]
-    g = reduce(GCD, basis[1:])
-    c_ = basis[0]*2^(1024-940)//g
-    return c_
-
-c_ = solver_hnp(tk[:100])
-if (c_*tk[0]**2)%n &gt; 2^940:
-    c_ = -c_
-
-X = []
-for tk_ in tk:
-    X.append((tk_**2*(c_)%n))
-
-primes = set()
-for x in X:
-    facs = list(factor(x))
-    for item in facs:
-        primes.add(item[0])
-        
-primes = list(primes)
-ch = []
-for x in X:
-    u = [0]*920
-    facs = list(factor(x))
-    for item in facs:
-        u[primes.index(item[0])] = item[1]
-    ch.append(u)
-    
-std = vector(ZZ, ch[0])
-Ch = []
-for i in range(1, len(ch)):
-    Ch.append(std-vector(ch[i]))
-    
-A = matrix(Zmod(2), Ch)
-ker = vector(ZZ, list(A.left_kernel().matrix()[0]))
-res = ker*matrix(ZZ, Ch)
-a = 1; b = 1
-for i in range(len(ker)):
-    if ker[i]:
-        a *= tk[0]
-        b *= tk[i+1]
-
-for i in range(len(res)):
-    if res[i] &gt; 0:
-        b *= pow(primes[i], res[i]//2, n)
-    else:
-        a *= pow(primes[i], abs(res[i])//2, n)
-
-p = GCD(a+b, n)
-q = n//p
-Fp = GF(p)
-Fq = GF(q)
-phi = (p-1)*(q-1)
-d = inverse_mod(0x10001, phi)
-c2 = inverse_mod(X[0], n)*tk[0]**2%n
-m2 = pow(c2, d, n)
-mp = Fp(m2).nth_root(2, all=True)
-mq = Fq(m2).nth_root(2, all=True)
-
-for i in mp:
-    for j in mq:
-        m = crt([int(i), int(j)], [p, q])
-        print(long_to_bytes(m))
-</code></pre><h2 id="n1token2">n1token2</h2>
-<p><strong>task.py</strong></p>
-<pre tabindex="0"><code>import random
-from secret import flag
- 
-assert FLAG.startswith(&#39;n1ctf{&#39;)
-assert FLAG.endswith(&#39;}&#39;)
-SECRET = bytes.fromhex(FLAG[6:-1])
-assert len(SECRET) == 16
- 
-p = 251
- 
-e = [1, 20, 113, 149, 219]
- 
-y = b&#39;&#39; 
-for x in range(1, p):
-    coeff = [random.choice(e)] + list(SECRET)
-    y += bytes([sum(c * pow(x, i, p) for i, c in enumerate(coeff)) % p])
-    
-print(f&#39;Token: {y.hex()}&#39;)
-</code></pre><h2 id="solution-2">Solution</h2>
-<p>We can use the prod idea to solve multiple choices problem</p>
-<p>assume $F(x)=\sum_{i=1}\limits^{16}a_ix^i$</p>
-<p>So the relation can be write as follow,</p>
-<p>$\prod_{i=0}\limits^4(F(x_j)+e_i-y_j)=0$</p>
-<p>$a_0+a_1\cdot F(x_j)+a_2\cdot F^2(x_j)+a_3\cdot F^3(x_j)+a_4\cdot F^4(x_j)+a_5\cdot F^5(x_j)=0$</p>
-<p>Considering $F^j(x)$ as independent polynomial, there are total 245 unknow coefficients.</p>
-<p>With 250 tokens, solving the matrix to recover all coefficient.</p>
-<pre tabindex="0"><code>token = &#39;ae47d3533e10b444374ebd35f578103f94c327b5959f4580b0dc4701d089f22c282acfed2626bd9ced919547dacc96c18595468952cbedbcf518b5ec0fbc0437ea8e3bd77c5f01f73b555cc97a382df1ce28b4af7f9a5ab9c47e055044f47463c4f33bebdd4d6965599c71720b5a549a8246cb200dc4e2dccfc4765c0ac266a8a5385172aa47f834db737a3bcc725ae5a1ec8b76d1ca4800da10450b04543377efa5428584efdfdf55282e0e4410ae7848a0217a7d66f2d6c06c846a4755867dbdf61c70646f67debf44839a342e5f64e3abd2c9f5b66656edc8004cea987503793f7e07e3b60af4852e03177cae1e8ee605aab76d3a70df4e1e&#39;
-p = 251
-e = [1, 20, 113, 149, 219]
-A = []
-v = []
-Z.&lt;x&gt; = PolynomialRing(Zmod(p))
-for i in range(0, len(token), 2):
-    tk = int(token[i:i+2], 16)
-    a = []
-    for e_ in e:
-        a.append(e_-tk)
-    f = (x+a[0])*(x+a[1])*(x+a[2])*(x+a[3])*(x+a[4])
-    coeff = (list(f))[::-1]
-    x0 = i//2+1
-    u = []
-    for _ in range(81):
-        u.append(coeff[0]*x0^_)
-    for _ in range(65):
-        u.append(coeff[1]*x0^_)
-    for _ in range(49):
-        u.append(coeff[2]*x0^_)
-    for _ in range(33):
-        u.append(coeff[3]*x0^_)
-    for _ in range(17):
-        u.append(coeff[4]*x0^_)
-    v.append(-coeff[-1])
-    A.append(u)
-    
-A = matrix(Zmod(p), A)
-v = vector(Zmod(p), v)
-sol = A.solve_right(v)
-secret = bytes(sol[-16:]).hex()
-print(secret)
-</code></pre>]]></content:encoded>
-    </item>
-    
-  </channel>
-</rss>
+      tocContent.style.display = "none";
+      toggleButton.textContent = "➕";
+  
+      
+      document.querySelectorAll('#table-of-contents a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script></body>
+</html>

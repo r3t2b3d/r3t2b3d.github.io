@@ -6,8 +6,8 @@
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>🌈C@T :) | 🌈C@T :)</title>
-<meta name="title" content="🌈C@T :)" />
+<title>echo :) | echo :)</title>
+<meta name="title" content="echo :)" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 
@@ -17,7 +17,7 @@
 
 
   
-  <meta property="og:title" content="🌈C@T :)" />
+  <meta property="og:title" content="echo :)" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://h45h.fun/" />
@@ -25,12 +25,12 @@
 
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="🌈C@T :)"/>
+<meta name="twitter:title" content="echo :)"/>
 <meta name="twitter:description" content=""/>
 
 
   
-  <meta itemprop="name" content="🌈C@T :)">
+  <meta itemprop="name" content="echo :)">
 <meta itemprop="description" content="">
 
 <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -43,14 +43,14 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" href="https://h45h.fun/index.xml" title="🌈C@T :)" />
+  <link rel="alternate" type="application/rss+xml" href="https://h45h.fun/index.xml" title="echo :)" />
   
 </head>
 
 <body>
   <header><a class="skip-link" href="#main-content">Skip to main content</a>
 
-<a href="/" class="title"><h1>🌈C@T :)</h1></a>
+<a href="/" class="title"><h1>echo :)</h1></a>
 <nav>
 <a href='https://h45h.fun/posts'>Blog</a>
 <a href='https://h45h.fun/'>About me</a>
@@ -69,17 +69,18 @@
 <style>
     p{ margin:3px auto}
 </style>
-<h2>$ whoami</h2>
+<hr>
+<h2>$ Whoami</h2>
 <a style="font-weight: bold;">💤 @hashhash</a>
 <h3>:: INTRO</h3>
 <p>🧑‍💻 Just an Amateur CTF player, likes to struggle at crypto, pwn challenges.</p>
-<p>👒 Playing CTF with <a href="https://www.nu1l.com/">Nu1L Team</a> & <a href="https://hashteam.club/about.html">HASHTEAM</a>.</p>
-<p>🌐 At present, I plan to learn some about MPC, Web3 and so on.</p>
+<p>🎮 Playing CTF with <a href="https://www.nu1l.com/">Nu1L Team</a> & <a href="https://hashteam.club/about.html">HASHTEAM</a>.</p>
+<p>🚀 At present, I plan to learn some about MPC, Web3 and so on.</p>
 
 <h3>:: CONTACT</h3>
 <ul>
     <li>Github: <a href="https://github.com/hash-hash">@hash_hash</a></li>
-    <li>Twiiter: <a href="https://twitter.com/hash0_o">@hash0_o</a></li>
+    <li>echo MTM1NzQ1OTMxN0BxcS5jb20K|base64 -d</li>
 </ul>
 
 <h3>:: Blog Links</h3>
@@ -101,6 +102,36 @@
 </small></footer>
 
     
-</body>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggleButton = document.getElementById("toggle-toc");
+      const tocContent = document.getElementById("toc-content");
+  
+      
+      toggleButton.addEventListener("click", function() {
+        if (tocContent.style.display === "none") {
+          tocContent.style.display = "block";
+          toggleButton.textContent = "➖";
+        } else {
+          tocContent.style.display = "none";
+          toggleButton.textContent = "➕";
+        }
+      });
+  
+      
+      tocContent.style.display = "none";
+      toggleButton.textContent = "➕";
+  
+      
+      document.querySelectorAll('#table-of-contents a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script></body>
 </html>

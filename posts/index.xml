@@ -280,32 +280,10 @@ sage: Eb = csidh(0, priv2)
       <pubDate>Tue, 12 Dec 2023 23:26:07 +0800</pubDate>
       
       <guid>https://h45h.fun/posts/n1ctf2021/</guid>
-      <description>Challenge Tags checkin Coppersmith, Math n1token1 HNP, Quadratic Sieve n1token2 Linear Algebra checkin task.py
-from Crypto.Util.number import * from secret import flag p = getPrime(512) q = getPrime(512) n = p*q x = 2021*p&#43;1120*q h = (inverse(x,n)&#43;x)%n e = 65537 c = pow(bytes_to_long(flag), e, n) print(&amp;#39;n =&amp;#39;, n) print(&amp;#39;c =&amp;#39;, c) print(&amp;#39;h =&amp;#39;, h) print(&amp;#39;p0 =&amp;#39;, p &amp;gt;&amp;gt; 490) # n = 124592923216765837982528839202733339713655242872717311800329884147642320435241014134533341888832955643881019336863843062120984698416851559736918389766033534214383285754683751490292848191235308958825702189602212123282858416891155764271492033289942894367802529296453904254165606918649570613530838932164490341793 # c = 119279592136391518960778700178474826421062018379899342254406783670889432182616590099071219538938202395671695005539485982613862823970622126945808954842683496637377151180225469409261800869161467402364879561554585345399947589618235872378329510108345004513054262809629917083343715270605155751457391599728436117833 # h = 115812446451372389307840774747986196103012628652193338630796109042038320397499948364970459686079508388755154855414919871257982157430015224489195284512204803276307238226421244647463550637321174259849701618681565567468929295822889537962306471780258801529979716298619553323655541002084406217484482271693997457806 # p0 = 4055618 Solution $h=\frac{1}{x}&#43;x$</description>
-      <content:encoded><![CDATA[<table>
-<thead>
-<tr>
-<th>Challenge</th>
-<th>Tags</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#checkin">checkin</a></td>
-<td>Coppersmith, Math</td>
-</tr>
-<tr>
-<td><a href="#n1token1">n1token1</a></td>
-<td>HNP, Quadratic Sieve</td>
-</tr>
-<tr>
-<td><a href="#n1token2">n1token2</a></td>
-<td>Linear Algebra</td>
-</tr>
-</tbody>
-</table>
-<h2 id="checkin">checkin</h2>
-<p><strong>task.py</strong></p>
+      <description>checkin from Crypto.Util.number import * from secret import flag p = getPrime(512) q = getPrime(512) n = p*q x = 2021*p&#43;1120*q h = (inverse(x,n)&#43;x)%n e = 65537 c = pow(bytes_to_long(flag), e, n) print(&amp;#39;n =&amp;#39;, n) print(&amp;#39;c =&amp;#39;, c) print(&amp;#39;h =&amp;#39;, h) print(&amp;#39;p0 =&amp;#39;, p &amp;gt;&amp;gt; 490) # n = 124592923216765837982528839202733339713655242872717311800329884147642320435241014134533341888832955643881019336863843062120984698416851559736918389766033534214383285754683751490292848191235308958825702189602212123282858416891155764271492033289942894367802529296453904254165606918649570613530838932164490341793 # c = 119279592136391518960778700178474826421062018379899342254406783670889432182616590099071219538938202395671695005539485982613862823970622126945808954842683496637377151180225469409261800869161467402364879561554585345399947589618235872378329510108345004513054262809629917083343715270605155751457391599728436117833 # h = 115812446451372389307840774747986196103012628652193338630796109042038320397499948364970459686079508388755154855414919871257982157430015224489195284512204803276307238226421244647463550637321174259849701618681565567468929295822889537962306471780258801529979716298619553323655541002084406217484482271693997457806 # p0 = 4055618 $h=\frac{1}{x}&#43;x$
+$\Rightarrow x^2-h\cdot x&#43;1(mod\ n)$
+We can get high bits of q through the known p high bits.</description>
+      <content:encoded><![CDATA[<h2 id="checkin">checkin</h2>
 <pre tabindex="0"><code>from Crypto.Util.number import *
 from secret import flag
  
@@ -326,8 +304,7 @@ print(&#39;p0 =&#39;, p &gt;&gt; 490)
 # c = 119279592136391518960778700178474826421062018379899342254406783670889432182616590099071219538938202395671695005539485982613862823970622126945808954842683496637377151180225469409261800869161467402364879561554585345399947589618235872378329510108345004513054262809629917083343715270605155751457391599728436117833
 # h = 115812446451372389307840774747986196103012628652193338630796109042038320397499948364970459686079508388755154855414919871257982157430015224489195284512204803276307238226421244647463550637321174259849701618681565567468929295822889537962306471780258801529979716298619553323655541002084406217484482271693997457806
 # p0 = 4055618
-</code></pre><h2 id="solution">Solution</h2>
-<p>$h=\frac{1}{x}+x$</p>
+</code></pre><p>$h=\frac{1}{x}+x$</p>
 <p>$\Rightarrow x^2-h\cdot x+1(mod\ n)$</p>
 <p>We can get high bits of q through the known p high bits.</p>
 <p>$x=2021\cdot p+1120\cdot q=(2021\cdot(2^{490}\cdot p_0+p_1)+1120\cdot(2^{490}\cdot q_0+q_1))$</p>
@@ -360,7 +337,6 @@ d = inverse_mod(0x10001, phi)
 m = pow(c, d, n)
 print(bytes.fromhex(hex(m)[2:]))
 </code></pre><h2 id="n1token1">n1token1</h2>
-<p><strong>task.py</strong></p>
 <pre tabindex="0"><code>from Crypto.Util.number import *
 import random
 from secret import flag
@@ -395,8 +371,7 @@ with open(&#34;output.txt&#34;, &#34;w&#34;)as f:
     f.write(&#34;n = &#34; + str(n) + &#34;\n&#34;)
     for i in range(920):
         f.write(&#34;Token #&#34;+str(i+1)+&#39;: &#39;+str(gettoken(c))+&#39;\n&#39;)
-</code></pre><h2 id="solution-1">Solution</h2>
-<p>The token generating as follow,</p>
+</code></pre><p>The token generating as follow,</p>
 <p>$tk_i = c\cdot \sqrt{X_i}(mod\ n)$</p>
 <p>$\Rightarrow tk_i^2\cdot(c^{-2})=X_i(mod\ n)$ Where $X&lt;2^{940}$</p>
 <p>So we can solve this hidden number problem to recover $X_i$.</p>
@@ -485,7 +460,6 @@ for i in mp:
         m = crt([int(i), int(j)], [p, q])
         print(long_to_bytes(m))
 </code></pre><h2 id="n1token2">n1token2</h2>
-<p><strong>task.py</strong></p>
 <pre tabindex="0"><code>import random
 from secret import flag
  
@@ -504,8 +478,7 @@ for x in range(1, p):
     y += bytes([sum(c * pow(x, i, p) for i, c in enumerate(coeff)) % p])
     
 print(f&#39;Token: {y.hex()}&#39;)
-</code></pre><h2 id="solution-2">Solution</h2>
-<p>We can use the prod idea to solve multiple choices problem</p>
+</code></pre><p>We can use the prod idea to solve multiple choices problem</p>
 <p>assume $F(x)=\sum_{i=1}\limits^{16}a_ix^i$</p>
 <p>So the relation can be write as follow,</p>
 <p>$\prod_{i=0}\limits^4(F(x_j)+e_i-y_j)=0$</p>

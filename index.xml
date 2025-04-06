@@ -6,7 +6,47 @@
     <description>Recent content on echo :)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 01 Nov 2024 18:09:10 +0800</lastBuildDate><atom:link href="https://h45h.fun/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Dec 2024 08:00:00 +0800</lastBuildDate><atom:link href="https://h45h.fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2024 Summary</title>
+      <link>https://h45h.fun/posts/2024_summary/</link>
+      <pubDate>Tue, 31 Dec 2024 08:00:00 +0800</pubDate>
+      
+      <guid>https://h45h.fun/posts/2024_summary/</guid>
+      <description>由于平时没有记录的习惯，所以是根据自己的印象整理一下今年干了什么.jpg。可以说是2024年度流水账💦&amp;hellip;
+今年的一二月份寒假例行在家过年摸🐠，然后在准备一些保研的事情，应该是非常早了，本来想着等下学期就行，但是学长说绩点不高的话提前联系会比较好。做的事情基本就是过过论文，看下方向是不是还合适。由于兴趣的原因比较接受密码学相关的，所以除了本校外信工所、浙大、上交的老师都看了下。信工所、上交做分析的比较多，浙大这边偏应用一点。然后就是联系导师，表达一下对方向的兴趣，看看后续联系什么的。感觉也是运气非常好了，三月份的时候就找到了合适的老师，后面就是时不时看看相关的论文。最神奇的是因为想找导师的时候选择广一点临时学了一手 Code Based 相关的内容，结果发现老师刚好也是有这个需求，后面也是持续发挥作用，不仅大三下有相关课程，CTF 出题也贡献了一些点子。
+之后在三四月的时候拉着同学参加了一手密码数学挑战赛，大一的时候就觉得这个比赛很硬核，大二的时候看了下选题，但因为时间原因也没咋研究，这次正好看到了比较合适的题目打算试试，甚至决赛还是在山大办。三个多月的初赛，几乎只打了三四天就把第一部分所有题目过掉了，但是第二部分就很抽象，也不知道到底想考什么，极其模糊的描述，感觉可以归类为猜谜题。我想着500分已经拿了400，第二部分随便弄一下应该就行，然后瞎找了手规律就下线了。最后也是进了决赛，后面得知分数线也就400刚好就是只做完第一部分的分数XD。
+最后期末周前打了 CryptoCTF，因为接触 CTF 的这几年几乎年年都打一下，甚至去年和 Zima 他们还AK了，虽然最后是十几名，因为太简单了大部分队伍都打完了。然后今年 Zima 也喊了我还有小鸡块、yolbby 和其他的一些师傅，正好 Nu1L 这边没打，Hermes 在旅游，于是拉上了 leukocyte 一起组了个 cyberCryer 去玩。因为感觉晚上脑子不是很清楚做不来题目，第一天晚上很早就睡了，然后大概是七点钟闹钟起来继续看，前 1/2 的时间大伙几乎都是在过一些简单题，什么比较常规的密码学和数学题。甚至今年还遇到了IMO的函数方程，没绷住，正好高中的时候还刷过类似的题目。大概是最后的一半时间我们做的还剩三个 tough 还有一个 0 解的 Medium，然后选了一个合适的就开始推。应该是在结束前几个小时小鸡块挂的 yafu 花了11个小时分解了4个128的乘积，谁能想到呢，CCTF 真有蛮力分解的题还放在了 tough 里。然后就是我搞了一下午的多变量，只有大概的思路，然后提议了一手要找论文，leu秒搜到了，我大致过了下论文逻辑基本就确定了，准备把现成的poc连上去打，写一半的时候我突然想通了，一直有个直接能bypass的逻辑没理清楚。做完之前 yolbby 和小鸡块也过掉了最后一个 tough，那就只剩下 0 解 Medium 。最后四支队伍也都是差这个题，手速原因非常幸运地拿到了🥈。
+几乎是在期末周的时间，和 HASHTEAM 进行了最后一把 CISCN，去的南京。结束了打了三年的 CISCN，虽然三年都没进决赛，但是感觉后面学弟们的机会还是比较大，氛围也是逐渐好了起来🎉。预计这之后应该能取得不错的成绩。
+六月份考完期末就是夏令营的时间，也没多想，因为很早联系好了老师，投了的浙大、上交、信工所也全都入营了，然后浙大这边的周期比较长，是实打实的做项目而不是纯粹的面试，感觉非常合适，就完全没管其他的学校了。接着就是在 ZJU 的快乐暑假，由于我们这级保研政策得到保研前公布，而大三一整个摸鱼导致绩点往下掉了快十名，需要拿到竞赛加分才行，所以那个时候还挺折磨的虽然说是感觉能拿到。但是真正在 ZJU 开始夏令营之后几乎是完全忘记了这回事，最为神奇的是组里面的一些学长因为打 CTF 的原因发现之前甚至都一起打过比赛甚至认识但是只知道 ID。所以融入的算是非常快了，基本在为期一个月的夏令营时间都是过的很开心，上下午捣鼓 idea，晚上和大家打球，非常 nice。中间去玉泉校区那边逛了逛，确实是非常有年代那边，环境也很好，但是住宿啥的就比不上水博园这边。
+夏令营结束 StrawHat 在杭州这边打 DEFCON，我觉得应该不会有密码，但是就在玉泉附近，所以我还是过去了，最后碰到了比较好玩的 Re/Crypto AWD，也是不亏。大致内容就是防守部分写一个64位的小型类哈希方案，然后攻击部分就是分析其他队伍的源码，然后求解。最开始玩的比较开心，因为刚上来大家传的一些防守都非常 trivial 。但是后面就变得阴间起来了，一些队伍开发了自动化的更改参数和少量代码逻辑，再加上这种类似对称的结构很难短时间分析出来，后面就基本没啥能干的活了。最后 StrawHat👒 又拿了第五。
+打完之后回学校参加了密码数学挑战赛的决赛，由于大半个暑假基本都在夏令营这边也没怎么做后续的优化，后面微调了下第二部分的逻辑就上交了。这次决赛来了非常多的 CTF 选手，比赛前的晚上 Deebato 喊大家一起吃了个饭，也是大型网友面基了。这比赛也算是我第一次上台答辩，属于是完全没经验。之前比赛的答辩纯靠队友带，给我整的很头疼。然后就尴尬了，本着评委老师应该只关注内容不会关注形式的心理，进行了一手稿的念，念完之后就感觉我真的很抽象。后面问了下其他人发现都是脱稿😭。答辩完大伙又一起去了周边的烧烤，开始吐槽神奇的牛顿多面体，也聊了很多，具体聊了啥我也忘了☹️。最后只拿了三等奖，也是符合预期毕竟花的时间有点少。总的来说还行，体验了一把，希望之后还能再玩玩，如果题目合适的话🤔。</description>
+      <content:encoded><![CDATA[<p>　　由于平时没有记录的习惯，所以是根据自己的印象整理一下今年干了什么.jpg。可以说是2024年度流水账💦&hellip;</p>
+<p>　　今年的一二月份寒假例行在家过年摸🐠，然后在准备一些保研的事情，应该是非常早了，本来想着等下学期就行，但是学长说绩点不高的话提前联系会比较好。做的事情基本就是过过论文，看下方向是不是还合适。由于兴趣的原因比较接受密码学相关的，所以除了本校外信工所、浙大、上交的老师都看了下。信工所、上交做分析的比较多，浙大这边偏应用一点。然后就是联系导师，表达一下对方向的兴趣，看看后续联系什么的。感觉也是运气非常好了，三月份的时候就找到了合适的老师，后面就是时不时看看相关的论文。最神奇的是因为想找导师的时候选择广一点临时学了一手 Code Based 相关的内容，结果发现老师刚好也是有这个需求，后面也是持续发挥作用，不仅大三下有相关课程，CTF 出题也贡献了一些点子。</p>
+<p>　　之后在三四月的时候拉着同学参加了一手密码数学挑战赛，大一的时候就觉得这个比赛很硬核，大二的时候看了下选题，但因为时间原因也没咋研究，这次正好看到了比较合适的题目打算试试，甚至决赛还是在山大办。三个多月的初赛，几乎只打了三四天就把第一部分所有题目过掉了，但是第二部分就很抽象，也不知道到底想考什么，极其模糊的描述，感觉可以归类为猜谜题。我想着500分已经拿了400，第二部分随便弄一下应该就行，然后瞎找了手规律就下线了。最后也是进了决赛，后面得知分数线也就400刚好就是只做完第一部分的分数XD。</p>
+<p>　　最后期末周前打了 CryptoCTF，因为接触 CTF 的这几年几乎年年都打一下，甚至去年和 Zima 他们还AK了，虽然最后是十几名，因为太简单了大部分队伍都打完了。然后今年 Zima 也喊了我还有小鸡块、yolbby 和其他的一些师傅，正好 Nu1L 这边没打，Hermes 在旅游，于是拉上了 leukocyte 一起组了个 cyberCryer 去玩。因为感觉晚上脑子不是很清楚做不来题目，第一天晚上很早就睡了，然后大概是七点钟闹钟起来继续看，前 1/2 的时间大伙几乎都是在过一些简单题，什么比较常规的密码学和数学题。甚至今年还遇到了IMO的函数方程，没绷住，正好高中的时候还刷过类似的题目。大概是最后的一半时间我们做的还剩三个 tough 还有一个 0 解的 Medium，然后选了一个合适的就开始推。应该是在结束前几个小时小鸡块挂的 yafu 花了11个小时分解了4个128的乘积，谁能想到呢，CCTF 真有蛮力分解的题还放在了 tough 里。然后就是我搞了一下午的多变量，只有大概的思路，然后提议了一手要找论文，leu秒搜到了，我大致过了下论文逻辑基本就确定了，准备把现成的poc连上去打，写一半的时候我突然想通了，一直有个直接能bypass的逻辑没理清楚。做完之前 yolbby 和小鸡块也过掉了最后一个 tough，那就只剩下 0 解 Medium 。最后四支队伍也都是差这个题，手速原因非常幸运地拿到了🥈。</p>
+<p><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/461742845.jpeg" alt="461742845"><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/%E6%9C%AA%E5%91%BD%E5%90%8D.png" alt="CCTF"></p>
+<p>　　几乎是在期末周的时间，和 HASHTEAM 进行了最后一把 CISCN，去的南京。结束了打了三年的 CISCN，虽然三年都没进决赛，但是感觉后面学弟们的机会还是比较大，氛围也是逐渐好了起来🎉。预计这之后应该能取得不错的成绩。</p>
+<p>　　六月份考完期末就是夏令营的时间，也没多想，因为很早联系好了老师，投了的浙大、上交、信工所也全都入营了，然后浙大这边的周期比较长，是实打实的做项目而不是纯粹的面试，感觉非常合适，就完全没管其他的学校了。接着就是在 ZJU 的快乐暑假，由于我们这级保研政策得到保研前公布，而大三一整个摸鱼导致绩点往下掉了快十名，需要拿到竞赛加分才行，所以那个时候还挺折磨的虽然说是感觉能拿到。但是真正在 ZJU 开始夏令营之后几乎是完全忘记了这回事，最为神奇的是组里面的一些学长因为打 CTF 的原因发现之前甚至都一起打过比赛甚至认识但是只知道 ID。所以融入的算是非常快了，基本在为期一个月的夏令营时间都是过的很开心，上下午捣鼓 idea，晚上和大家打球，非常 nice。中间去玉泉校区那边逛了逛，确实是非常有年代那边，环境也很好，但是住宿啥的就比不上水博园这边。</p>
+<p><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/IMG_2166.jpeg" alt="IMG_2166"><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/IMG_2168.jpeg" alt="IMG_2168"></p>
+<p>　　夏令营结束 StrawHat 在杭州这边打 DEFCON，我觉得应该不会有密码，但是就在玉泉附近，所以我还是过去了，最后碰到了比较好玩的 Re/Crypto AWD，也是不亏。大致内容就是防守部分写一个64位的小型类哈希方案，然后攻击部分就是分析其他队伍的源码，然后求解。最开始玩的比较开心，因为刚上来大家传的一些防守都非常 trivial 。但是后面就变得阴间起来了，一些队伍开发了自动化的更改参数和少量代码逻辑，再加上这种类似对称的结构很难短时间分析出来，后面就基本没啥能干的活了。最后 StrawHat👒 又拿了第五。</p>
+<p>　　打完之后回学校参加了密码数学挑战赛的决赛，由于大半个暑假基本都在夏令营这边也没怎么做后续的优化，后面微调了下第二部分的逻辑就上交了。这次决赛来了非常多的 CTF 选手，比赛前的晚上 Deebato 喊大家一起吃了个饭，也是大型网友面基了。这比赛也算是我第一次上台答辩，属于是完全没经验。之前比赛的答辩纯靠队友带，给我整的很头疼。然后就尴尬了，本着评委老师应该只关注内容不会关注形式的心理，进行了一手稿的念，念完之后就感觉我真的很抽象。后面问了下其他人发现都是脱稿😭。答辩完大伙又一起去了周边的烧烤，开始吐槽神奇的牛顿多面体，也聊了很多，具体聊了啥我也忘了☹️。最后只拿了三等奖，也是符合预期毕竟花的时间有点少。总的来说还行，体验了一把，希望之后还能再玩玩，如果题目合适的话🤔。</p>
+<p>　　再后来就是在学校的为期将近一个月的焦虑时间，从8/23比完赛到9/13，因为一直不确定学校给竞赛的政策，稍微有点折磨。甚至还去问了手教务老师也没给我准确的答复。最终很幸运地，政策依然是保持和往年一样也是成功加上了，并且由于学校神奇的加分政策综合排名还给加到了专业 rank1。</p>
+<p>　　拿到保研名额后就轻松了很多，购入了第一台 switch，快乐地玩耍了几天，这之后也是把宝可梦、马里奥、塞尔达这种大IP都玩了遍。</p>
+<p><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/IMG_2854.JPG" alt="IMG_2854"><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/IMG_2855.JPG" alt="IMG_2855"></p>
+<p>　　到了九月底的时候，小鸡块从哪了解到了金融密码杯，拉大🔥一起打一打。我看了下给的奖金很多，觉得可以玩。然后小鸡块、我、yolbby 和 Zima 再次顶着 cyberCryer 出征。但是这比赛离谱的点在于它是密码杯，但是初赛是 CTF 的全方向，所幸各个方向基本都是签到难度。我把二进制都解决了，发现队友其他方向也非常猛，最后初赛打了个 Rank1，顺利拿到了苏州线下旅游机会。</p>
+<p>　　还有月初的时候 Nu1L 打了一手 BlackHatmea，也拿到了线下机会，并且都集中在11月。于是我在学校待到了10月底，搬运了一下这三年的东西然后打算回家宅到旅游开始。这中间把 N1CTF2024 的题也出了，今年我出了三道，最好玩的还是那道矩阵大师。我大概很久之前就想出一个把 Lattice 和 Code 都涵盖的题目，最终也是靠着脑洞给缝合上了。由于比赛时间较短，完整预期做出了的只有 NeSE，看 discord 上的评价应该还是比较好玩。但是因为出的比较赶导致有一些神奇的非预期，不过都能接受，也是很不错的想法，最终非常平均地收获了三个4解。</p>
+<p>　　接下来就是线下旅游第一站苏州，在赛前我们就已经计划好了，因为这比赛逆向部分的权重远大于密码。我们几乎只能做出来密码的部分，逆向部分肯定没法做，于是小鸡块早早在小🍠上找到了合理的路线。在第一天上午做完所有能做的密码部分后我们就撤了。然后开启了为期一周的苏州之旅，实际上只有我和 yolbby 游满了，zima 因为临时的论文答辩玩了一天就走了，小鸡块玩了四天，之后有另外一个比赛。我打算卡下一场比赛的机票，但是中间几天时间回家有点亏，所以一直在苏州呆了整整一周。u1s1我大概是把苏州所有大景点都游过一遍，手机相册这几天的照片占比已经达到了 1/3 的程度。确实之前的比赛很少能爽玩，基本也只是打完就走。感觉最好玩的还是狮子林的假山还有七里山塘、平江路那边，另外狮子山的夜景也很绝。并且苏州这边应该也是打卡大户，旅拍的非常多。</p>
+<p><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/IMG_2513.jpeg" alt="IMG_2513"><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/IMG_2585.jpeg" alt="IMG_2585"></p>
+<p>　　第二站利雅得🇸🇦，因为也是第一次出国玩，出去之前比较担心我的听力，毕竟6级听力就从没听懂过。实际上也确实，一些必要的东西可能配合肢体动作也能沟通，但是更细节的问题就很难表达的清楚了。前三天都是比赛，可能也是太久没打 CTF 的原因显得非常生疏，过题速度也比较慢。今年的 Crypto 题目质量参差不齐，感觉远低于去年。但是最后一天的密码我做的也是有点离谱，后面回想起来不知道当时在想什么，最后一小时的时候我已经完全解决问题了，只要把两部分代码拼起来就ok，但是似乎我又找到了一个更好更快的解法，然后开始推新解法。结果推到最后十几分钟开始测试怎么测都不对，发现漏题目条件了，只能用原来的解法打。只剩十分钟又火急火燎地去拼之前的做法，然后没拼完，最后 Nu1L 拿了🥉，感觉有点背锅。比赛结束主办方给选手留出了两天的游玩，因为是他们这边包的差旅，所以我们还能在利雅得呆两天。后面就是和队友参观沙特的国家博物馆，吃一些这边的特色，前几天因为怕各种不确定因素影响比赛，大伙连吃了三天薯条汉堡什么的。最后一天 shikaku 一直在微信给我发他们队在这边的旅游记录，真坏啊☹️。另外这次也是坐了最久的长途，总共五个人给拆成了三种行程，给我的行程还得在香港中转，一趟过去飞机上的时间就超过12小时了😣。</p>
+<p><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/IMG_2856.jpeg" alt="IMG_2856"><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/IMG_2741.jpeg" alt="IMG_2741"></p>
+<p>　　回家之后也就没有什么其他安排了，打磨打磨之前暑假做的想法，然后闲下来的周末和 Nu1L 打了两场 CTF。因为想了下今年 CTF 确实没怎么打特别是国际赛可能一只手都能数过来。最后AK了TSGCTF，0CTF做了 3/4 。感觉还行就是打的这几天都还挺累，量稍微有点多。</p>
+<p><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/4cc143ed-3fd8-43a4-a538-d233f8c0d55c.png" alt="4cc143ed-3fd8-43a4-a538-d233f8c0d55c"><img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/image-20241230143440837.png" alt="image-20241230143440837"></p>
+<p>　　总的来说今年过的还比较幸运👼，没有什么糟糕😈的事情发生。希望25年能维持健康的睡眠时间💤，继续捣鼓捣鼓密码学相关的东西，新的一年一切都顺顺利利吧。</p>
+<p>　　　　　　　　　　　　　<img src="https://picture-1311455354.cos.ap-shanghai.myqcloud.com/img/IMG_2858.jpeg" alt="IMG_2858"></p>
+]]></content:encoded>
+    </item>
+    
     <item>
       <title>Intro 2 Isogeny</title>
       <link>https://h45h.fun/posts/intro-2-isogeny/</link>
@@ -281,96 +321,50 @@ sage: Eb = csidh(0, priv2)
       
       <guid>https://h45h.fun/misc/</guid>
       <description>CTF-Challenges My partial crypto challenge, maybe you will like it. repo
-N1CTF 2023 Challenge Difficulty Tag e2D1P ★★★ LLL, Linear Algebra JQCTF-Final 2023 Challenge Difficulty Tag Br0kenAuth ★★★ HEC, HNP N1Junior 2024 Challenge Difficulty Tag IEV@L ★★ Isogeny Hash, Jail JQCTF-Quals 2024 Challenge Difficulty Tag S2DH&#43; ★★★ SIDH, Torsion point attack N1CTF 2024 Challenge Difficulty Tag M4sTeriX ★★★ ISD, HSSP, MT19937 </description>
-      <content:encoded><![CDATA[<h2 id="ctf-challenges">CTF-Challenges</h2>
+AliyunCTF 2025:
+OhMyDH ★★★ Quaternion, CSIDH PRFCasino ★★ ARX, Feistel N1Junior 2025:
+QuantumVM ★★ Quantum Circuit, LLL N1CTF 2024:
+M4sTeriX ★★★ ISD, HSSP, MT19937 Seashells ★★ Isogeny JQCTF-Quals 2024:
+S2DH&#43; ★★★ SIDH, Torsion point attack BabyOracle1 ★★ McEliece, Broadcast attack N1Junior 2024:
+IEV@L ★★ Isogeny Hash, Jail JQCTF-Final 2023:
+Br0kenAuth ★★★ HEC, HNP N1CTF 2023:
+e2D1P ★★★ LLL, Linear Algebra </description>
+      <content:encoded><![CDATA[<h3 id="ctf-challenges">CTF-Challenges</h3>
 <blockquote>
 <p>My partial crypto challenge, maybe you will like it. <a href="https://github.com/hash-hash/My-CTF-Challenges">repo</a></p>
 </blockquote>
-<h4 id="n1ctf-2023"><em>N1CTF 2023</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">e2D1P</td>
-<td style="text-align:center">★★★</td>
-<td style="text-align:center">LLL, Linear Algebra</td>
-</tr>
-</tbody>
-</table>
-<h4 id="jqctf-final-2023"><em>JQCTF-Final 2023</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Br0kenAuth</td>
-<td style="text-align:center">★★★</td>
-<td style="text-align:center">HEC, HNP</td>
-</tr>
-</tbody>
-</table>
-<h4 id="n1junior-2024"><em>N1Junior 2024</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">IEV@L</td>
-<td style="text-align:center">★★</td>
-<td style="text-align:center">Isogeny Hash, Jail</td>
-</tr>
-</tbody>
-</table>
-<h4 id="jqctf-quals-2024"><em>JQCTF-Quals 2024</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">S2DH+</td>
-<td style="text-align:center">★★★</td>
-<td style="text-align:center">SIDH, Torsion point attack</td>
-</tr>
-</tbody>
-</table>
-<h4 id="n1ctf-2024"><em>N1CTF 2024</em></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Challenge</th>
-<th style="text-align:center">Difficulty</th>
-<th style="text-align:center">Tag</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">M4sTeriX</td>
-<td style="text-align:center">★★★</td>
-<td style="text-align:center">ISD, HSSP, MT19937</td>
-</tr>
-</tbody>
-</table>
+<hr>
+<p>AliyunCTF 2025:</p>
+<ul>
+<li>OhMyDH <strong>★★★</strong> <code>Quaternion, CSIDH</code></li>
+<li>PRFCasino <strong>★★</strong> <code>ARX, Feistel</code></li>
+</ul>
+<p>N1Junior 2025:</p>
+<ul>
+<li>QuantumVM <strong>★★</strong> <code>Quantum Circuit, LLL</code></li>
+</ul>
+<p>N1CTF 2024:</p>
+<ul>
+<li>M4sTeriX <strong>★★★</strong> <code>ISD, HSSP, MT19937</code></li>
+<li>Seashells <strong>★★</strong> <code>Isogeny</code></li>
+</ul>
+<p>JQCTF-Quals 2024:</p>
+<ul>
+<li>S2DH+ <strong>★★★</strong> <code>SIDH, Torsion point attack</code></li>
+<li>BabyOracle1 <strong>★★</strong> <code>McEliece, Broadcast attack</code></li>
+</ul>
+<p>N1Junior 2024:</p>
+<ul>
+<li>IEV@L <strong>★★</strong> <code>Isogeny Hash, Jail</code></li>
+</ul>
+<p>JQCTF-Final 2023:</p>
+<ul>
+<li>Br0kenAuth <strong>★★★</strong> <code>HEC, HNP</code></li>
+</ul>
+<p>N1CTF 2023:</p>
+<ul>
+<li>e2D1P <strong>★★★</strong> <code>LLL, Linear Algebra</code></li>
+</ul>
 ]]></content:encoded>
     </item>
     
